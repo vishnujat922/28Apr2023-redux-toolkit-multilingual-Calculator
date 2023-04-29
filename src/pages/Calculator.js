@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import LanguageDropdown from '../componets/LanguageDropdown';
 
 
+/*
 //object.method()
 i18n
     .use(initReactI18next) // passes i18n down to react-i18next
@@ -46,7 +47,7 @@ i18n
         interpolation: {
             escapeValue: false // react already safes from xss => https://www.i18next.com/translation-function/interpolation#unescape
         }
-    });
+    });*/
 
 
 const Calculator = () => {
@@ -57,14 +58,19 @@ const Calculator = () => {
 
 
     useEffect(() => {
-
+       var cl = localStorage.getItem('curl');
+       i18n.changeLanguage(cl)
     }, [])
     //2.2 Function Definition Area
-
+    let changeLanguage = (l)=>{
+        //alert('Hello Everyone'+l);
+        localStorage.setItem('curlng',l);
+        i18n.changeLanguage(l)
+    }
     //2.3 Return Statement
     return (
         <>
-            <LanguageDropdown />
+           <LanguageDropdown />
             <h1>Calculator Design Using HTML Layout</h1>
             <div className="container">
                 <div className="header">{t('this Calculator design by me!')}</div>
